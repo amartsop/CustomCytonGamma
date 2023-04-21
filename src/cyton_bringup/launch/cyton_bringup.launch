@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- send urdf to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find cyton_description)/urdf/cyton_robot.urdf.xacro'" />
+
+  <!-- Start cython controller manager -->
+  <include file="$(find cyton_controllers)/launch/controller_manager.launch" />
+
+  <!-- Start the controllers -->
+  <include file="$(find cyton_controllers)/launch/start_controller.launch" />
+  
+  <!-- Start joint state publisher -->
+  <node name="dynamixel_joint_state_publisher" pkg="cyton_controllers"  type="dynamixel_joint_state_publisher.py" output="screen" /> 
+
+</launch>

@@ -1,0 +1,310 @@
+<?xml version="1.0" ?>
+
+<robot name="cyton" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <!-- Joint 0 -->
+  <link name="cyton_base_footprint">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="cyton_base_joint" type="fixed">
+    <parent link="cyton_base_footprint"/>
+    <child link="cyton_0_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+  </joint>
+
+  <!-- Link 0 -->
+  <link name="cyton_0_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link0.stl"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="100.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1.1027" iyy="1.1027" izz="1.1027"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://cyton_description/meshes/cyton_link0.stl" />
+        </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint 1 -->
+  <joint name="cyton_1_joint" type="revolute">
+    <parent link="cyton_0_link"/>
+    <child link="cyton_1_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.05315"/>
+    <limit effort="100.0" lower="-2.618" upper="2.618" velocity="1.0"/>
+    <axis xyz="0 0 -1"/>
+  </joint>
+
+  <!-- Link 1 -->
+  <link name="cyton_1_link">
+    <visual>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link1.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link1.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="50.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".1027" iyy=".1027" izz=".1027"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Transmission 1 -->
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cyton_1_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <!-- Joint 2 -->
+  <joint name="cyton_2_joint" type="revolute">
+    <parent link="cyton_1_link"/>
+    <child link="cyton_2_link"/>
+    <origin rpy="0 0 0" xyz="0 -0.0205 0.12435"/>
+    <limit effort="100.0" lower="-1.5708" upper="1.5708" velocity="1.0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+
+  <!-- Link 2 -->
+  <link name="cyton_2_link">
+    <visual>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link2.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link2.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="20.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".0827" iyy=".0827" izz=".0827"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Transmission 2 -->
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cyton_2_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <!-- Joint 3 -->
+  <joint name="cyton_3_joint" type="revolute">
+    <parent link="cyton_2_link"/>
+    <child link="cyton_3_link"/>
+    <origin rpy="0 0 0" xyz="-0.0205 0.0215 0.1255"/>
+    <limit effort="100.0" lower="-1.5708" upper="1.5708" velocity="1.0"/>
+    <axis xyz="-1 0 0"/>
+  </joint>
+
+  <!-- Link 3 -->
+  <link name="cyton_3_link">
+    <visual>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link3.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link3.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".0627" iyy=".0627" izz=".0627"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Transmission 3 -->
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cyton_3_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+ 
+  <!-- Joint 4 -->
+  <joint name="cyton_4_joint" type="revolute">
+    <parent link="cyton_3_link"/>
+    <child link="cyton_4_link"/>
+    <origin rpy="0 0 0" xyz="0.0215 -0.026255 0.0778"/>
+    <limit effort="100.0" lower="-1.5708" upper="1.5708" velocity="1.0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+  
+  <!-- Link 4 -->
+  <link name="cyton_4_link">
+    <visual>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link4.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link4.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".0327" iyy=".0327" izz=".0327"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Transmission 4 -->
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cyton_4_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <!-- Joint 5 -->
+  <joint name="cyton_5_joint" type="revolute">
+    <parent link="cyton_4_link"/>
+    <child link="cyton_5_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.026255 0.03"/>
+    <limit effort="100.0" lower="-3.1415" upper="3.1415" velocity="1.0"/>
+    <axis xyz="0 0 -1"/>
+  </joint>
+ 
+  <!-- Link 5 -->
+  <link name="cyton_5_link">
+    <visual>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link5.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link5.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".0327" iyy=".0327" izz=".0327"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Transmission 5 -->
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cyton_5_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <!-- Joint 6 -->
+  <joint name="cyton_6_joint" type="revolute">
+      <parent link="cyton_5_link"/>
+      <child link="cyton_6_link"/>
+      <origin rpy="0 1.5708 0" xyz="-0.0309 0.0 0.086599"/>
+    <limit effort="100.0" lower="-3.1415" upper="3.1415" velocity="1.0"/>
+      <axis xyz="0 0 -1"/>
+  </joint>
+
+  <!-- Link 6 -->
+  <link name="cyton_6_link">
+    <visual>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link6.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0 0.0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_description/meshes/cyton_link6.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".0327" iyy=".0327" izz=".0327"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Transmission 6 -->
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cyton_6_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+  <gazebo>
+    <plugin name="joint_state_publisher"
+            filename="libgazebo_ros_joint_state_publisher.so">
+      <jointName>cyton_1_joint, cyton_2_joint, cyton_3_joint, cyton_4_joint, cyton_5_joint, cyton_6_joint </jointName>
+    </plugin>
+  </gazebo>
+
+</robot>
+

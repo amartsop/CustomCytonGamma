@@ -1,0 +1,6 @@
+<launch>
+
+    <include file="$(find cyton_bringup)/launch/cyton_bringup.launch" />
+
+   <include file="$(find cyton_moveit_config)/launch/cyton_moveit_planning_execution.launch" />
+</launch>

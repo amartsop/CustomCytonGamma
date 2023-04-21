@@ -1,0 +1,24 @@
+<launch>
+	<rosparam file="$(find cyton_controllers)/config/cyton_controller.yaml" command="load"/>
+
+	<node name="one_cyton_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --port port_0 --type=simple
+		cyton_1_joint_position_controller
+		cyton_2_joint_position_controller
+		cyton_3_joint_position_controller
+		cyton_4_joint_position_controller
+		cyton_5_joint_position_controller
+		cyton_6_joint_position_controller
+		"
+		output="screen"/>
+
+	  <node name="one_cyton_action_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --type=meta arm_controller
+		cyton_1_joint_position_controller
+		cyton_2_joint_position_controller
+		cyton_3_joint_position_controller
+		cyton_4_joint_position_controller
+		cyton_5_joint_position_controller
+		cyton_6_joint_position_controller
+		"
+		output="screen"/>
+
+</launch>

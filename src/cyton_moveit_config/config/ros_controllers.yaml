@@ -1,0 +1,13 @@
+controller_list:
+  - name: arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+      - cyton_1_joint
+      - cyton_2_joint
+      - cyton_3_joint
+      - cyton_4_joint
+      - cyton_5_joint
+      - cyton_6_joint
+      
+

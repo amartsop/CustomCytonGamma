@@ -1,0 +1,13 @@
+controller_list:
+  - name: fake_cyton_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - cyton_1_joint
+      - cyton_2_joint
+      - cyton_3_joint
+      - cyton_4_joint
+      - cyton_5_joint
+      - cyton_6_joint
+initial:  # Define initial robot poses per group
+  - group: cyton_arm
+    pose: home

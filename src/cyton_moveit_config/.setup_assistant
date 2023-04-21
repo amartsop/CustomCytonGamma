@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cyton_description
+    relative_path: urdf/cyton_robot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/cyton.srdf
+  CONFIG:
+    author_name: Athanasios Martsopoulos
+    author_email: athanasios.martsopoulos@bristol.ac.uk
+    generated_timestamp: 1649927943

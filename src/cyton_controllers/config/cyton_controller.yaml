@@ -1,0 +1,89 @@
+dynamixels: ['cyton_1_joint', 'cyton_2_joint', 'cyton_3_joint', 'cyton_4_joint', 'cyton_5_joint', 'cyton_6_joint']
+
+cyton_1_joint_position_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: cyton_1_joint
+  joint_speed: 5.0
+  motor:
+    id: 0
+    init: 2048
+    min: 323
+    max: 3751
+
+cyton_2_joint_position_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: cyton_2_joint
+  joint_speed: 5.0
+  motor:
+    id: 1
+    init: 2020
+    min: 0
+    max: 4095
+
+cyton_3_joint_position_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: cyton_3_joint
+  joint_speed: 5.0
+  motor:
+    id: 2
+    init: 2090
+    min: 0
+    max: 4095
+
+cyton_4_joint_position_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: cyton_4_joint
+  joint_speed: 5.0
+  motor:
+    id: 5
+    init: 1920
+    min: 0
+    max: 4095
+
+cyton_5_joint_position_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: cyton_5_joint
+  joint_speed: 5.0
+  motor:
+    id: 6
+    init: 2048
+    min: 0
+    max: 4095
+
+cyton_6_joint_position_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: cyton_6_joint
+  joint_speed: 5.0
+  motor:
+    id: 7
+    init: 2048
+    min: 0
+    max: 4095
+
+arm_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_trajectory_action_controller
+    type: JointTrajectoryActionController
+  joint_trajectory_action_node:
+    min_velocity: 0.25
+    # constraints:
+    #   goal_time: 1.0
